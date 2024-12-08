@@ -1,7 +1,17 @@
+import {Container} from '@mui/material';
+import ChatBar from './UI/AppToolbar/AppToolbar';
+
 const App = () => {
   return (
     <>
-      <h1>Hello World!</h1>
+      <header>
+          <ChatBar />
+      </header>
+      <main>
+        <Container>
+          content
+        </Container>
+      </main>
     </>
   );
 };
