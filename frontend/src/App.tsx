@@ -1,5 +1,7 @@
 import {Container} from '@mui/material';
 import ChatBar from './UI/AppToolbar/AppToolbar';
+import NewMessage from './features/NewMessage';
+import Messages from './features/Messages';
 
 const App = () => {
   return (
@@ -9,7 +11,8 @@ const App = () => {
       </header>
       <main>
         <Container>
-          content
+          <NewMessage />
+          <Messages/>
         </Container>
       </main>
     </>
