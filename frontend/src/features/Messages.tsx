@@ -28,7 +28,7 @@ const Messages = () => {
       </Grid>
       <Grid item container gap={2}>
         {messages.map(message => (
-          <ChatMessage key={message.id} author={message.author} message={message.message}/>
+          <ChatMessage key={message.id} author={message.author} message={message.message} datetime={message.datetime} />
         ))}
       </Grid>
     </Grid>

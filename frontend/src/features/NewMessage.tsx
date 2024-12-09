@@ -1,6 +1,6 @@
 import {useAppDispatch} from '../app/hooks';
 import {MessageMutation} from '../types';
-import {createMessage} from './messageThunk';
+import {createMessage, fetchMessages} from './messageThunk';
 import {Typography} from '@mui/material';
 import MessageForm from './components/MessageForm';
 
@@ -9,6 +9,7 @@ const NewMessage = () => {
 
   const onFormSubmit = async (msgMutation: MessageMutation) => {
     await dispatch(createMessage(msgMutation));
+    await dispatch(fetchMessages());
   };
 
   return (
