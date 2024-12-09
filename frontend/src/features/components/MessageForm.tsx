@@ -1,12 +1,16 @@
 import React, {useState} from 'react';
 import {MessageMutation} from '../../types';
-import {Button, Grid, TextField} from '@mui/material';
+import {Button, CircularProgress, Grid, TextField} from '@mui/material';
+import {useAppSelector} from '../../app/hooks';
+import {selectIsCreating} from '../messageSlice';
 
 interface MessageFormProps {
   onSubmit: (mutation: MessageMutation) => void;
 }
 
 const MessageForm: React.FC<MessageFormProps> = ({onSubmit}) => {
+
+  const isCreating = useAppSelector(selectIsCreating);
 
 
   const [state, setState] = useState<MessageMutation>({
@@ -61,7 +65,17 @@ const MessageForm: React.FC<MessageFormProps> = ({onSubmit}) => {
 
 
         <Grid item>
-          <Button sx={{mb: 3}} type="submit" color="info" variant="contained">Send</Button>
+          <Button
+            sx={{ mb: 3 }}
+            type="submit"
+            disabled={isCreating}
+            startIcon={isCreating ? <CircularProgress size={24} color="inherit" /> : null}
+            color="info"
+            variant="contained"
+          >
+            {isCreating ? 'Loading...' : 'Send'}
+          </Button>
+
         </Grid>
       </Grid>
     </form>

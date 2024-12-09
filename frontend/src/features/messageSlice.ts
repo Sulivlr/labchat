@@ -5,13 +5,13 @@ import {createMessage, fetchMessages} from './messageThunk';
 interface MessageState {
   item: Message[];
   fetching: boolean;
-  createLoading: boolean;
+  isCreating: boolean;
 }
 
 const initialState: MessageState = {
   item: [],
   fetching: false,
-  createLoading: false,
+  isCreating: false,
 };
 
 
@@ -30,20 +30,22 @@ export const messagesSlice = createSlice({
     });
 
     builder.addCase(createMessage.pending, (state) => {
-      state.createLoading = true;
+      state.isCreating = true;
     }).addCase(createMessage.fulfilled, (state) => {
-      state.createLoading = false;
+      state.isCreating = false;
     }).addCase(createMessage.rejected, (state) => {
-      state.createLoading = false;
+      state.isCreating = false;
     });
   },
   selectors: {
     selectMessages: (state) => state.item,
     selectFetching: (state) => state.fetching,
+    selectIsCreating: (state) => state.isCreating,
   }
 });
 
 export const messagesReducer = messagesSlice.reducer;
 export const {selectMessages,
-  selectFetching
+  selectFetching,
+  selectIsCreating,
 } = messagesSlice.selectors;

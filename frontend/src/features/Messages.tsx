@@ -1,10 +1,9 @@
-import {Grid, Typography} from '@mui/material';
+import {CircularProgress, Grid, Typography} from '@mui/material';
 import {useAppDispatch, useAppSelector} from '../app/hooks';
 import {selectFetching, selectMessages} from './messageSlice';
 import {useEffect} from 'react';
 import {fetchMessages} from './messageThunk';
 import ChatMessage from '../features/components/ChatMessage';
-import Spinner from './components/Spinners/Spinner';
 
 
 const Messages = () => {
@@ -19,7 +18,7 @@ const Messages = () => {
 
 
   return isFetching ?  (
-    <Spinner /> ) : (
+    <CircularProgress /> ) : (
     <Grid container direction="column" gap={2}>
       <Grid item>
         <Grid item>
